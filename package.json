@@ -1,0 +1,30 @@
+{
+  "name": "ep.u3d.runtime.forlua",
+  "displayName": "EP.U3D.RUNTIME.LUA",
+  "description": "Lua runtime.",
+  "version": "0.0.1",
+  "unity": "2019.2",
+  "unityRelease": "0a12",
+  "relatedPackages": {},
+  "upmCi": {},
+  "repository": {
+    "url": "https://github.com/wellshsu/EP.U3D.LIBRARY.LUA.git",
+    "type": "git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Wells Hsu",
+    "email": "wellshsu@outlook.com",
+    "url": "https://github.com/wellshsu"
+  },
+  "type": "library",
+  "dependencies": {
+    "ep.u3d.library.base": "0.0.1",
+    "ep.u3d.library.lua": "0.0.3",
+    "ep.u3d.library.asset": "0.0.2",
+    "ep.u3d.library.net": "0.0.2",
+    "ep.u3d.library.evt": "0.0.1",
+    "ep.u3d.library.ui": "0.0.2",
+    "ep.u3d.library.scene": "0.0.2"
+  }
+}
