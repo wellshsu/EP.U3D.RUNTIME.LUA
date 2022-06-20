@@ -52,7 +52,7 @@ namespace EP.U3D.RUNTIME.LUA.BASE
                 }
                 if (frame != null && method != null && method.DeclaringType != null)
                 {
-                    if (method.DeclaringType.FullName == "EP_U3D_RUNTIME_FORLUA_BASE_HelperWrap")
+                    if (method.DeclaringType.FullName == "EP_U3D_RUNTIME_LUA_BASE_HelperWrap")
                     {
                         int lineNumber = LuaDLL.tolua_where(LuaManager.LuaState.L, 1);
                         string fileName = LuaDLL.lua_tostring(LuaManager.LuaState.L, -1);

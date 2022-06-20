@@ -1,5 +1,5 @@
 {
-  "name": "ep.u3d.runtime.forlua",
+  "name": "ep.u3d.runtime.lua",
   "displayName": "EP.U3D.RUNTIME.LUA",
   "description": "Lua runtime.",
   "version": "0.0.1",
