@@ -38,7 +38,7 @@ namespace EP.U3D.RUNTIME.LUA
         [NoToLua] [NonSerialized] public bool Inited;
         [NoToLua] [NonSerialized] public bool InitOK;
         [NoToLua] [NonSerialized] public LuaTable Object;
-        [NoToLua] public List<Field> Fields = new();
+        [NoToLua] public List<Field> Fields = new List<Field>();
 
         private LuaFunction mAwakeFunc;
         private LuaFunction mStartFunc;
