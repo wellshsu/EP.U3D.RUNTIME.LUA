@@ -13,8 +13,9 @@ namespace EP.U3D.RUNTIME.LUA.SCENE
 {
     public class Scene : LIBRARY.SCENE.Scene
     {
+        public LuaTable LScene;
+
         private string mName;
-        private LuaTable mScene;
         private LuaFunction mAwakeFunc;
         private LuaFunction mStartFunc;
         private LuaFunction mUpdateFunc;
@@ -24,20 +25,20 @@ namespace EP.U3D.RUNTIME.LUA.SCENE
 
         public Scene(string name, LuaTable scene)
         {
+            LScene = scene;
             mName = name;
-            mScene = scene;
-            mAwakeFunc = mScene.GetLuaFunction("Awake");
-            mStartFunc = mScene.GetLuaFunction("Start");
-            mUpdateFunc = mScene.GetLuaFunction("Update");
-            mStopFunc = mScene.GetLuaFunction("Stop");
+            mAwakeFunc = LScene.GetLuaFunction("Awake");
+            mStartFunc = LScene.GetLuaFunction("Start");
+            mUpdateFunc = LScene.GetLuaFunction("Update");
+            mStopFunc = LScene.GetLuaFunction("Stop");
         }
 
-        public override void Awake() { mAwakeFunc?.Call(mScene); }
+        public override void Awake() { mAwakeFunc?.Call(LScene); }
 
-        public override void Start() { mStartFunc?.Call(mScene); }
+        public override void Start() { mStartFunc?.Call(LScene); }
 
-        public override void Update() { mUpdateFunc?.Call(mScene); }
+        public override void Update() { mUpdateFunc?.Call(LScene); }
 
-        public override void Stop() { mStopFunc?.Call(mScene); }
+        public override void Stop() { mStopFunc?.Call(LScene); }
     }
 }

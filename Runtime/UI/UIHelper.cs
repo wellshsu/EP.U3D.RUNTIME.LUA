@@ -33,7 +33,7 @@ namespace EP.U3D.RUNTIME.LUA.UI
             }
         }
 
-        public static LuaTable GetComponentInParent(Object rootObj, LuaTable type, bool includeInactive = false)
+        public static LuaTable GetComponentInParent(Object rootObj, LuaTable type)
         {
             return GetComponentInParent(rootObj, null, type);
         }
@@ -55,6 +55,16 @@ namespace EP.U3D.RUNTIME.LUA.UI
                 }
             }
             return null;
+        }
+
+        public static new object GetComponentInParent(Object rootObj, System.Type type)
+        {
+            return LIBRARY.UI.UIHelper.GetComponentInParent(rootObj, null, type);
+        }
+
+        public static new object GetComponentInParent(Object parentObj, string path, System.Type type)
+        {
+            return LIBRARY.UI.UIHelper.GetComponentInParent(parentObj, path, type);
         }
 
         public static LuaTable GetComponent(Object rootObj, LuaTable type)
@@ -81,6 +91,16 @@ namespace EP.U3D.RUNTIME.LUA.UI
             return null;
         }
 
+        public static new object GetComponent(Object rootObj, System.Type type)
+        {
+            return LIBRARY.UI.UIHelper.GetComponent(rootObj, null, type);
+        }
+
+        public static new object GetComponent(Object parentObj, string path, System.Type type)
+        {
+            return LIBRARY.UI.UIHelper.GetComponent(parentObj, path, type);
+        }
+
         public static LuaTable GetComponentInChildren(Object rootObj, LuaTable type, bool includeInactive = false)
         {
             return GetComponentInChildren(rootObj, null, type, includeInactive);
@@ -103,6 +123,16 @@ namespace EP.U3D.RUNTIME.LUA.UI
                 }
             }
             return null;
+        }
+
+        public static new object GetComponentInChildren(Object rootObj, System.Type type, bool includeInactive = false)
+        {
+            return LIBRARY.UI.UIHelper.GetComponentInChildren(rootObj, null, type, includeInactive);
+        }
+
+        public static new object GetComponentInChildren(Object parentObj, string path, System.Type type, bool includeInactive = false)
+        {
+            return LIBRARY.UI.UIHelper.GetComponentInChildren(parentObj, path, type, includeInactive);
         }
 
         public static LuaTable[] GetComponentsInParent(Object rootObj, LuaTable type, bool includeInactive = false)
@@ -131,6 +161,16 @@ namespace EP.U3D.RUNTIME.LUA.UI
             return NIL_LOBJECT_ARR;
         }
 
+        public static new object[] GetComponentsInParent(Object rootObj, System.Type type, bool includeInactive = false)
+        {
+            return LIBRARY.UI.UIHelper.GetComponentsInParent(rootObj, null, type, includeInactive);
+        }
+
+        public static new object[] GetComponentsInParent(Object parentObj, string path, System.Type type, bool includeInactive = false)
+        {
+            return LIBRARY.UI.UIHelper.GetComponentsInParent(parentObj, path, type, includeInactive);
+        }
+
         public static LuaTable[] GetComponents(Object rootObj, LuaTable type)
         {
             return GetComponents(rootObj, null, type);
@@ -155,6 +195,16 @@ namespace EP.U3D.RUNTIME.LUA.UI
                 return rets.ToArray();
             }
             return NIL_LOBJECT_ARR;
+        }
+
+        public static new object[] GetComponents(Object rootObj, System.Type type)
+        {
+            return LIBRARY.UI.UIHelper.GetComponents(rootObj, null, type);
+        }
+
+        public static new object[] GetComponents(Object parentObj, string path, System.Type type)
+        {
+            return LIBRARY.UI.UIHelper.GetComponents(parentObj, path, type);
         }
 
         public static LuaTable[] GetComponentsInChildren(Object rootObj, LuaTable type, bool includeInactive = false)
@@ -183,6 +233,16 @@ namespace EP.U3D.RUNTIME.LUA.UI
             return NIL_LOBJECT_ARR;
         }
 
+        public static new object[] GetComponentsInChildren(Object rootObj, System.Type type, bool includeInactive = false)
+        {
+            return LIBRARY.UI.UIHelper.GetComponentsInChildren(rootObj, null, type, includeInactive);
+        }
+
+        public static new object[] GetComponentsInChildren(Object parentObj, string path, System.Type type, bool includeInactive = false)
+        {
+            return LIBRARY.UI.UIHelper.GetComponentsInChildren(parentObj, path, type, includeInactive);
+        }
+
         public static LuaTable AddComponent(Object rootObj, LuaTable type)
         {
             return AddComponent(rootObj, null, type);
@@ -206,6 +266,16 @@ namespace EP.U3D.RUNTIME.LUA.UI
             {
                 return null;
             }
+        }
+
+        public static new object AddComponent(Object rootObj, System.Type type)
+        {
+            return LIBRARY.UI.UIHelper.AddComponent(rootObj, null, type);
+        }
+
+        public static new object AddComponent(Object parentObj, string path, System.Type type)
+        {
+            return LIBRARY.UI.UIHelper.AddComponent(parentObj, path, type);
         }
 
         public static void RemoveComponent(Object rootObj, LuaTable type)
@@ -248,6 +318,26 @@ namespace EP.U3D.RUNTIME.LUA.UI
             }
         }
 
+        public static new void RemoveComponent(Object rootObj, System.Type type)
+        {
+            LIBRARY.UI.UIHelper.RemoveComponent(rootObj, null, type, false);
+        }
+
+        public static new void RemoveComponent(Object rootObj, System.Type type, bool immediate)
+        {
+            LIBRARY.UI.UIHelper.RemoveComponent(rootObj, null, type, immediate);
+        }
+
+        public static new void RemoveComponent(Object parentObj, string path, System.Type type)
+        {
+            LIBRARY.UI.UIHelper.RemoveComponent(parentObj, path, type, false);
+        }
+
+        public static new void RemoveComponent(Object parentObj, string path, System.Type type, bool immediate)
+        {
+            LIBRARY.UI.UIHelper.RemoveComponent(parentObj, path, type, immediate);
+        }
+
         public static LuaTable SetComponentEnabled(Object rootObj, LuaTable type, bool enabled)
         {
             return SetComponentEnabled(rootObj, null, type, enabled);
@@ -271,6 +361,16 @@ namespace EP.U3D.RUNTIME.LUA.UI
                 }
             }
             return null;
+        }
+
+        public static new object SetComponentEnabled(Object rootObj, System.Type type, bool enabled)
+        {
+            return LIBRARY.UI.UIHelper.SetComponentEnabled(rootObj, null, type, enabled);
+        }
+
+        public static new object SetComponentEnabled(Object parentObj, string path, System.Type type, bool enabled)
+        {
+            return LIBRARY.UI.UIHelper.SetComponentEnabled(parentObj, path, type, enabled);
         }
     }
 }

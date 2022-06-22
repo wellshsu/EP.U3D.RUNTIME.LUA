@@ -29,12 +29,12 @@ namespace EP.U3D.RUNTIME.LUA.NET
             return connection;
         }
 
-        public static void SendCgi(int id, byte[] body, CgiDelegate callback = null, int uid = -1, int rid = -1, string host = null)
+        public static void SendCgi(int id, byte[] body, CgiDelegate callback = null, int uid = 0, int rid = 0, string host = null)
         {
             Loom.StartCR(DoCgi(id, body, callback, uid, rid, host));
         }
 
-        private static IEnumerator DoCgi(int id, byte[] body, CgiDelegate callback = null, int uid = -1, int rid = -1, string host = null)
+        private static IEnumerator DoCgi(int id, byte[] body, CgiDelegate callback = null, int uid = 0, int rid = 0, string host = null)
         {
             if (string.IsNullOrEmpty(host)) host = Constants.CGI_SERVER_URL;
             using (UnityWebRequest request = new UnityWebRequest(host, "POST"))
@@ -42,8 +42,8 @@ namespace EP.U3D.RUNTIME.LUA.NET
                 request.uploadHandler = new UploadHandlerRaw(body);
                 request.downloadHandler = new DownloadHandlerBuffer();
                 request.SetRequestHeader("Content-Type", "application/octet-stream");
-                request.SetRequestHeader("AccessToken", Constants.CGI_ACCESS_TOKEN);
-                request.SetRequestHeader("RefreshToken", Constants.CGI_REFRESH_TOKEN);
+                if (!string.IsNullOrEmpty(Constants.CGI_ACCESS_TOKEN)) request.SetRequestHeader("AccessToken", Constants.CGI_ACCESS_TOKEN);
+                if (!string.IsNullOrEmpty(Constants.CGI_REFRESH_TOKEN)) request.SetRequestHeader("RefreshToken", Constants.CGI_REFRESH_TOKEN);
                 request.SetRequestHeader("CID", id.ToString());
                 request.SetRequestHeader("UID", uid == -1 ? Constants.CGI_SERVER_UID.ToString() : uid.ToString());
                 request.SetRequestHeader("RID", rid.ToString());
