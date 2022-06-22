@@ -49,6 +49,7 @@ namespace EP.U3D.RUNTIME.LUA
         private LuaFunction mFixedUpdateFunc;
         private LuaFunction mOnDestroyFunc;
         private LuaFunction mOnTriggerEnterFunc;
+        private LuaFunction mOnTriggerStayFunc;
         private LuaFunction mOnTriggerExitFunc;
         private LuaFunction mOnCollisionEnterFunc;
         private LuaFunction mOnCollisionExitFunc;
@@ -159,6 +160,7 @@ namespace EP.U3D.RUNTIME.LUA
             mFixedUpdateFunc = Object.GetLuaFunction("FixedUpdate");
             mOnDestroyFunc = Object.GetLuaFunction("OnDestroy");
             mOnTriggerEnterFunc = Object.GetLuaFunction("OnTriggerEnter");
+            mOnTriggerStayFunc = Object.GetLuaFunction("OnTriggerStay");
             mOnTriggerExitFunc = Object.GetLuaFunction("OnTriggerExit");
             mOnCollisionEnterFunc = Object.GetLuaFunction("OnCollisionEnter");
             mOnCollisionExitFunc = Object.GetLuaFunction("OnCollisionExit");
@@ -169,15 +171,15 @@ namespace EP.U3D.RUNTIME.LUA
 
         protected virtual void Awake()
         {
-//#if UNITY_EDITOR
-//            // [20220331]:单元模式
-//            if (LuaManager.Instance == null)
-//            {
-//                LuaManager.PreInit();
-//                LuaManager.PostInit();
-//                LuaManager.DoString("require 'Core.Launcher'");
-//            }
-//#endif
+            //#if UNITY_EDITOR
+            //            // [20220331]:单元模式
+            //            if (LuaManager.Instance == null)
+            //            {
+            //                LuaManager.PreInit();
+            //                LuaManager.PostInit();
+            //                LuaManager.DoString("require 'Core.Launcher'");
+            //            }
+            //#endif
             if (!Inited) Init();
             if (!InitOK) return;
             if (Fields != null && Fields.Count > 0)
@@ -344,6 +346,11 @@ namespace EP.U3D.RUNTIME.LUA
                 mOnTriggerEnterFunc.Dispose();
                 mOnTriggerEnterFunc = null;
             }
+            if (mOnTriggerStayFunc != null)
+            {
+                mOnTriggerStayFunc.Dispose();
+                mOnTriggerStayFunc = null;
+            }
             if (mOnTriggerExitFunc != null)
             {
                 mOnTriggerExitFunc.Dispose();
@@ -372,6 +379,11 @@ namespace EP.U3D.RUNTIME.LUA
         protected virtual void OnTriggerEnter(Collider other)
         {
             if (mOnTriggerEnterFunc != null) { mOnTriggerEnterFunc.Call(Object, other); }
+        }
+
+        protected virtual void OnTriggerStay(Collider other)
+        {
+            if (mOnTriggerStayFunc != null) { mOnTriggerStayFunc.Call(Object, other); }
         }
 
         protected virtual void OnTriggerExit(Collider other)
