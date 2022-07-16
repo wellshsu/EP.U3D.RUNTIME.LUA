@@ -60,12 +60,12 @@ namespace EP.U3D.RUNTIME.LUA
         [NoToLua] public static readonly List<LuaComponent> comps = new List<LuaComponent>();
         LuaComponent() { if (frame) comps.Add(this); }
         [NoToLua]
-        public static void BeforeHook()
+        public static void BeforeHook(string asset = "")
         {
             frame = true;
         }
         [NoToLua]
-        public static void AfterHook()
+        public static void AfterHook(string asset = "")
         {
             if (comps.Count > 0)
             {
